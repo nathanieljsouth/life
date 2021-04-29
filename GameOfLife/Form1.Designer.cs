@@ -235,6 +235,7 @@ namespace GameOfLife
             0,
             0,
             0});
+            this.spnAutoStop.ValueChanged += new System.EventHandler(this.spnAutoStop_ValueChanged);
             // 
             // chkAutoStop
             // 

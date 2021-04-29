@@ -12,6 +12,9 @@ namespace GameOfLife
 {
     public partial class Form1 : Form
     {
+        //Variable to hold the grid
+        Grid lifeGrid = new Grid();
+
         public Form1()
         {
             InitializeComponent();
@@ -29,12 +32,31 @@ namespace GameOfLife
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+
+            //Set up the properties of the grid
+            lifeGrid.Rows = Convert.ToInt32(spnRows.Value);
+            lifeGrid.Columns = Convert.ToInt32(spnColumns.Value);
+            lifeGrid.Alive = Convert.ToInt32(spnAlive.Value);
+
+            try
+            {
+                //create the grid
+                lifeGrid.createGrid();
+            }
+            catch (Exception errorMessage)
+            {
+                MessageBox.Show(errorMessage.Message);
+                
+            }
+
+            //enable the 'run' controls
             grpRun.Enabled = true;
-            txtGenerations.Text = "0";
+
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+
             grpSetup.Enabled = false;
             btnStart.Enabled = false;
             btnStop.Enabled = true;
@@ -53,7 +75,9 @@ namespace GameOfLife
 
         private void btnOneGen_Click(object sender, EventArgs e)
         {
-
+            lifeGrid.processOneGeneration();
+            txtGrid.Text = lifeGrid.getGridDisplay();
+            updateGenerationCount();
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -64,22 +88,30 @@ namespace GameOfLife
 
         private void tmrTimer_Tick(object sender, EventArgs e)
         {
-            txtGrid.Text = DateTime.Now.ToString();
+            lifeGrid.processOneGeneration();
 
-            //increase the generation count
-            int genCount;
-            genCount = int.Parse(txtGenerations.Text);
-            genCount = genCount + 1;
-            txtGenerations.Text = genCount.ToString();
-            
+            txtGrid.Text = lifeGrid.getGridDisplay();
+
+            updateGenerationCount();
+
         }
 
+        private void updateGenerationCount()
+        {
+            //increase the generation count
+            txtGenerations.Text = lifeGrid.Generations.ToString();
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void spnAutoStop_ValueChanged(object sender, EventArgs e)
         {
 
         }
