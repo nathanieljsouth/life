@@ -11,7 +11,7 @@ namespace GameOfLife
         public int Rows;
         public int Columns;
         public int Alive;
-        public int Generations=0;
+        public int Generations=0; //Should be read only, should not be updatable outside this class.
 
         public void createGrid()
         {

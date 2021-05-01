@@ -115,5 +115,10 @@ namespace GameOfLife
         {
 
         }
+
+        private void spnInterval_ValueChanged(object sender, EventArgs e)
+        {
+            tmrTimer.Interval = Convert.ToInt32(spnInterval.Value);
+        }
     }
 }

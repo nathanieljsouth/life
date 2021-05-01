@@ -48,12 +48,15 @@ namespace GameOfLife
             this.btnStart = new System.Windows.Forms.Button();
             this.txtGrid = new System.Windows.Forms.TextBox();
             this.tmrTimer = new System.Windows.Forms.Timer(this.components);
+            this.spnInterval = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpSetup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spnAlive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnColumns)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnRows)).BeginInit();
             this.grpRun.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spnAutoStop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spnInterval)).BeginInit();
             this.SuspendLayout();
             // 
             // grpSetup
@@ -177,6 +180,8 @@ namespace GameOfLife
             // 
             // grpRun
             // 
+            this.grpRun.Controls.Add(this.spnInterval);
+            this.grpRun.Controls.Add(this.label1);
             this.grpRun.Controls.Add(this.txtGenerations);
             this.grpRun.Controls.Add(this.lblGenerations);
             this.grpRun.Controls.Add(this.spnAutoStop);
@@ -293,6 +298,43 @@ namespace GameOfLife
             this.tmrTimer.Interval = 500;
             this.tmrTimer.Tick += new System.EventHandler(this.tmrTimer_Tick);
             // 
+            // spnInterval
+            // 
+            this.spnInterval.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.spnInterval.Location = new System.Drawing.Point(139, 35);
+            this.spnInterval.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.spnInterval.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.spnInterval.Name = "spnInterval";
+            this.spnInterval.Size = new System.Drawing.Size(120, 23);
+            this.spnInterval.TabIndex = 6;
+            this.spnInterval.Value = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.spnInterval.ValueChanged += new System.EventHandler(this.spnInterval_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(24, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 15);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Interval (ms)";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -313,6 +355,7 @@ namespace GameOfLife
             this.grpRun.ResumeLayout(false);
             this.grpRun.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spnAutoStop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spnInterval)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -338,6 +381,9 @@ namespace GameOfLife
         private System.Windows.Forms.Timer tmrTimer;
         private System.Windows.Forms.Label lblGenerations;
         private System.Windows.Forms.TextBox txtGenerations;
+        private System.Windows.Forms.NumericUpDown spn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown spnInterval;
     }
 }
 
