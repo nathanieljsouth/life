@@ -42,6 +42,7 @@ namespace GameOfLife
             {
                 //create the grid
                 lifeGrid.createGrid();
+                txtGrid.Text = lifeGrid.getGridDisplay();
             }
             catch (Exception errorMessage)
             {
