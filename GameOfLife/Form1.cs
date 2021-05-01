@@ -36,7 +36,7 @@ namespace GameOfLife
             //Set up the properties of the grid
             lifeGrid.Rows = Convert.ToInt32(spnRows.Value);
             lifeGrid.Columns = Convert.ToInt32(spnColumns.Value);
-            lifeGrid.Alive = Convert.ToInt32(spnAlive.Value);
+            lifeGrid.AliveRequested = Convert.ToInt32(spnAlive.Value);
 
             try
             {

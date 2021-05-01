@@ -10,14 +10,14 @@ namespace GameOfLife
     {
         public int Rows;
         public int Columns;
-        public int Alive;
+        public int AliveRequested;
         public int Generations=0; //Should be read only, should not be updatable outside this class.
 
         private Cell[,] GridCells;
 
         public void createGrid()
         {
-            if ((Rows*Columns)<Alive)
+            if ((Rows*Columns)<AliveRequested)
             {
                 throw new Exception("The number of alive cells cannot exceed the total number of cells");
             }
@@ -31,6 +31,28 @@ namespace GameOfLife
                     GridCells[RowCounter, ColumnCounter] = new Cell();
                 }
             }
+
+            //Random generation for # alive set by user
+            int NumberAlive = 0;
+
+            //Create the random number generator
+            Random RandomNumberGenerator = new Random();
+
+            //Loop until number of cells alive is equal to user request
+            while (NumberAlive < AliveRequested)
+            {
+                int RandomRow = RandomNumberGenerator.Next(0, Rows);
+                int RandomColumn = RandomNumberGenerator.Next(0, Columns);
+
+                if (GridCells[RandomRow,RandomColumn].CurrentlyAlive == false)
+                {
+                    GridCells[RandomRow, RandomColumn].CurrentlyAlive = true;
+
+                    NumberAlive = NumberAlive + 1;
+                }              
+            }
+
+
         }
 
         public void processOneGeneration()
@@ -52,7 +74,7 @@ namespace GameOfLife
                     }
                     else
                     {
-                        GridDisplay = GridDisplay + "O ";
+                        GridDisplay = GridDisplay + " ";
                     }
                 }
                 GridDisplay = GridDisplay + "\r\n";
