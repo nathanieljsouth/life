@@ -57,6 +57,24 @@ namespace GameOfLife
 
         public void processOneGeneration()
         {
+            for (int RowCounter = 0; RowCounter < Rows; RowCounter++)
+            {
+                for (int ColumnCounter = 0; ColumnCounter < Columns; ColumnCounter++)
+                {
+                    //Tell the cell the number of live neighbours it has and commanding it calculate its next state
+                    GridCells[RowCounter, ColumnCounter].CalculateNextState(1);
+                }                
+            }
+
+            for (int RowCounter = 0; RowCounter < Rows; RowCounter++)
+            {
+                for (int ColumnCounter = 0; ColumnCounter < Columns; ColumnCounter++)
+                {
+                    //Tell the cell to update its current state with the state it just calculated
+                    GridCells[RowCounter, ColumnCounter].ApplyNextState();
+                }
+            }
+
             Generations = Generations + 1;
         }
 
