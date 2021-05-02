@@ -19,9 +19,10 @@ namespace GameOfLife
         {
             if ((Rows*Columns)<AliveRequested)
             {
+                //If the number of requested cells is greater than the space available, return an error
                 throw new Exception("The number of alive cells cannot exceed the total number of cells");
             }
-
+            //Populate the Grid with new cell classes
             GridCells = new Cell[Rows, Columns];
 
             for (int RowCounter = 0; RowCounter < Rows; RowCounter++)
@@ -54,6 +55,7 @@ namespace GameOfLife
             Generations = 0;
 
         }
+        //Function that calculates the number of cells currently alive
         public int GetNumberAlive()
         {
             int CellsCurrentlyAlive = 0;
@@ -62,8 +64,10 @@ namespace GameOfLife
             {
                 for (int ColumnCounter = 0; ColumnCounter < Columns; ColumnCounter++)
                 {
+                    //If the coordinate chosen is currently alive
                     if (GridCells[RowCounter, ColumnCounter].CurrentlyAlive)
                     {
+                        //Add 1 to the number of cells alive
                         CellsCurrentlyAlive = CellsCurrentlyAlive + 1;
                     }
                 }
@@ -71,6 +75,7 @@ namespace GameOfLife
             return CellsCurrentlyAlive;
         }
 
+        //Function that applies the rules for one generation
         public void processOneGeneration()
         {
             for (int RowCounter = 0; RowCounter < Rows; RowCounter++)
@@ -81,7 +86,7 @@ namespace GameOfLife
                     GridCells[RowCounter, ColumnCounter].CalculateNextState(GetNumberOfAliveNeighbours(RowCounter, ColumnCounter));
                 }                
             }
-
+            //Go over every cell and update its state
             for (int RowCounter = 0; RowCounter < Rows; RowCounter++)
             {
                 for (int ColumnCounter = 0; ColumnCounter < Columns; ColumnCounter++)
@@ -90,10 +95,12 @@ namespace GameOfLife
                     GridCells[RowCounter, ColumnCounter].ApplyNextState();
                 }
             }
-
+            //Add 1 to the number of Generations
             Generations = Generations + 1;
         }
 
+
+        //Function that displays the alive and dead cells in the text box. X for alive, space for dead.
         public string getGridDisplay()
         {
             string GridDisplay = "";
@@ -102,15 +109,19 @@ namespace GameOfLife
             {
                 for (int ColumnCounter = 0; ColumnCounter < Columns; ColumnCounter++)
                 {
+                    //If the cell chosen is currently alive
                     if (GridCells[RowCounter,ColumnCounter].CurrentlyAlive == true)
                     {
+                        //If cells is alive add an "X" to the grid
                         GridDisplay = GridDisplay + "X";
                     }
                     else
                     {
+                        //If the cells is dead add a " " to the grid
                         GridDisplay = GridDisplay + " ";
                     }
                 }
+                //At the end of each row add a new line
                 GridDisplay = GridDisplay + "\r\n";
             }
             return GridDisplay;

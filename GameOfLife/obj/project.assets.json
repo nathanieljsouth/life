@@ -8,19 +8,19 @@
     "net5.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Nathaniel\\.nuget\\packages\\": {}
+    "C:\\Users\\N.J.South\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Dropbox\\Homework\\School Projects\\St Kents\\Year 13\\Digital Technology\\Game of Life\\GameOfLife\\GameOfLife\\GameOfLife.csproj",
+      "projectUniqueName": "C:\\Data\\Dropbox\\Homework\\School Projects\\St Kents\\Year 13\\Digital Technology\\Game of Life\\GameOfLife\\GameOfLife\\GameOfLife.csproj",
       "projectName": "GameOfLife",
-      "projectPath": "D:\\Dropbox\\Homework\\School Projects\\St Kents\\Year 13\\Digital Technology\\Game of Life\\GameOfLife\\GameOfLife\\GameOfLife.csproj",
-      "packagesPath": "C:\\Users\\Nathaniel\\.nuget\\packages\\",
-      "outputPath": "D:\\Dropbox\\Homework\\School Projects\\St Kents\\Year 13\\Digital Technology\\Game of Life\\GameOfLife\\GameOfLife\\obj\\",
+      "projectPath": "C:\\Data\\Dropbox\\Homework\\School Projects\\St Kents\\Year 13\\Digital Technology\\Game of Life\\GameOfLife\\GameOfLife\\GameOfLife.csproj",
+      "packagesPath": "C:\\Users\\N.J.South\\.nuget\\packages\\",
+      "outputPath": "C:\\Data\\Dropbox\\Homework\\School Projects\\St Kents\\Year 13\\Digital Technology\\Game of Life\\GameOfLife\\GameOfLife\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Nathaniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\N.J.South\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

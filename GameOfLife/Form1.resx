@@ -64,24 +64,27 @@ Rules
 
 For a space that is populated:
 
-- Each cell with one or no neighbors dies, as if by solitude.
-- Each cell with four or more neighbors dies, as if by overpopulation.
-- Each cell with two or three neighbors survives.
+- Each cell with one or no neighbours dies.
+- Each cell with four or more neighbours dies.
+- Each cell with two or three neighbours survives.
 
-For a space that is empty or unpopulated
+For a space that is unpopulated:
 
-- Each cell with three neighbors becomes populated.
+- Each cell with three populated neighbours becomes populated.
 
 The Controls
 
-Use the Setup Tools to define the size of your grid and the number of cells you want alive.
+Use the Setup Tools to define the size of your grid and the number of cells you want alive at the beginning of the game.
 After you have done this, click Create Grid.
 
-After you have created your grid use the Run tools to run the Game of Life:
-- One Generation: This button process your grid for one cycle of life.
-- Interval: This changes the pause between each generation in milliseconds
-- Start / Stop: This are used to start and stop the Game at any point.
-- Number of Generations: This displays how many generations have passed since the start
-- Number of Alive cells: This display how many cells are currently alive.</value>
+After you have created your grid use the Run Tools to run the Game of Life:
+- One Generation: This button processes your grid for one cycle of life.
+- Interval: This changes the pause between each generation in milliseconds.
+- Start / Stop: These are used to start and stop the Game at any point.
+- Number of Generations: This displays how many generations have passed since the start.
+- Number of Alive cells: This displays how many cells are currently alive.</value>
   </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>42</value>
+  </metadata>
 </root>

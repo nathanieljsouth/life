@@ -87,8 +87,12 @@ namespace GameOfLife
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            txtGrid.Width = Form1.ActiveForm.Width - txtGrid.Left - 50;
-            txtGrid.Height = Form1.ActiveForm.Height - txtGrid.Top - 50;
+            //This event can fire when the form is first loaded, so check that there is an active form first
+            if (Form1.ActiveForm is not null)
+            {
+                txtGrid.Width = Form1.ActiveForm.Width - txtGrid.Left - 50;
+                txtGrid.Height = Form1.ActiveForm.Height - txtGrid.Top - 50;
+            }
         }
 
         private void tmrTimer_Tick(object sender, EventArgs e)
