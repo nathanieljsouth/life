@@ -57,4 +57,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txtGrid.Text" xml:space="preserve">
+    <value>Welcome to my Game of Life app
+
+Rules
+
+For a space that is populated:
+
+- Each cell with one or no neighbors dies, as if by solitude.
+- Each cell with four or more neighbors dies, as if by overpopulation.
+- Each cell with two or three neighbors survives.
+
+For a space that is empty or unpopulated
+
+- Each cell with three neighbors becomes populated.
+
+The Controls
+
+Use the Setup Tools to define the size of your grid and the number of cells you want alive.
+After you have done this, click Create Grid.
+
+After you have created your grid use the Run tools to run the Game of Life:
+- One Generation: This button process your grid for one cycle of life.
+- Interval: This changes the pause between each generation in milliseconds
+- Start / Stop: This are used to start and stop the Game at any point.
+- Number of Generations: This displays how many generations have passed since the start
+- Number of Alive cells: This display how many cells are currently alive.</value>
+  </data>
 </root>

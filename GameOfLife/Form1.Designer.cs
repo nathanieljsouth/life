@@ -30,6 +30,7 @@ namespace GameOfLife
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.grpSetup = new System.Windows.Forms.GroupBox();
             this.spnAlive = new System.Windows.Forms.NumericUpDown();
             this.spnColumns = new System.Windows.Forms.NumericUpDown();
@@ -39,6 +40,8 @@ namespace GameOfLife
             this.lblAlive = new System.Windows.Forms.Label();
             this.lblRows = new System.Windows.Forms.Label();
             this.grpRun = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtNumberAlive = new System.Windows.Forms.TextBox();
             this.spnInterval = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.txtGenerations = new System.Windows.Forms.TextBox();
@@ -48,8 +51,6 @@ namespace GameOfLife
             this.btnStart = new System.Windows.Forms.Button();
             this.txtGrid = new System.Windows.Forms.TextBox();
             this.tmrTimer = new System.Windows.Forms.Timer(this.components);
-            this.txtNumberAlive = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.grpSetup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spnAlive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnColumns)).BeginInit();
@@ -76,7 +77,7 @@ namespace GameOfLife
             // 
             // spnAlive
             // 
-            this.spnAlive.Location = new System.Drawing.Point(139, 112);
+            this.spnAlive.Location = new System.Drawing.Point(153, 112);
             this.spnAlive.Maximum = new decimal(new int[] {
             250,
             0,
@@ -88,7 +89,7 @@ namespace GameOfLife
             0,
             0});
             this.spnAlive.Name = "spnAlive";
-            this.spnAlive.Size = new System.Drawing.Size(120, 23);
+            this.spnAlive.Size = new System.Drawing.Size(75, 23);
             this.spnAlive.TabIndex = 3;
             this.spnAlive.Value = new decimal(new int[] {
             250,
@@ -98,7 +99,7 @@ namespace GameOfLife
             // 
             // spnColumns
             // 
-            this.spnColumns.Location = new System.Drawing.Point(139, 79);
+            this.spnColumns.Location = new System.Drawing.Point(153, 79);
             this.spnColumns.Maximum = new decimal(new int[] {
             50,
             0,
@@ -110,7 +111,7 @@ namespace GameOfLife
             0,
             0});
             this.spnColumns.Name = "spnColumns";
-            this.spnColumns.Size = new System.Drawing.Size(120, 23);
+            this.spnColumns.Size = new System.Drawing.Size(75, 23);
             this.spnColumns.TabIndex = 2;
             this.spnColumns.Value = new decimal(new int[] {
             50,
@@ -120,7 +121,7 @@ namespace GameOfLife
             // 
             // spnRows
             // 
-            this.spnRows.Location = new System.Drawing.Point(139, 44);
+            this.spnRows.Location = new System.Drawing.Point(153, 44);
             this.spnRows.Maximum = new decimal(new int[] {
             50,
             0,
@@ -132,7 +133,7 @@ namespace GameOfLife
             0,
             0});
             this.spnRows.Name = "spnRows";
-            this.spnRows.Size = new System.Drawing.Size(120, 23);
+            this.spnRows.Size = new System.Drawing.Size(75, 23);
             this.spnRows.TabIndex = 1;
             this.spnRows.Value = new decimal(new int[] {
             20,
@@ -143,9 +144,9 @@ namespace GameOfLife
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(24, 145);
+            this.btnCreate.Location = new System.Drawing.Point(128, 163);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 23);
+            this.btnCreate.Size = new System.Drawing.Size(100, 23);
             this.btnCreate.TabIndex = 4;
             this.btnCreate.Text = "Create Grid";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -198,6 +199,25 @@ namespace GameOfLife
             this.grpRun.Text = "Run Tools";
             this.grpRun.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 199);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(122, 15);
+            this.label2.TabIndex = 101;
+            this.label2.Text = "Number of Alive Cells";
+            // 
+            // txtNumberAlive
+            // 
+            this.txtNumberAlive.Enabled = false;
+            this.txtNumberAlive.Location = new System.Drawing.Point(153, 196);
+            this.txtNumberAlive.Name = "txtNumberAlive";
+            this.txtNumberAlive.Size = new System.Drawing.Size(75, 23);
+            this.txtNumberAlive.TabIndex = 100;
+            this.txtNumberAlive.TabStop = false;
+            this.txtNumberAlive.Text = "0";
+            // 
             // spnInterval
             // 
             this.spnInterval.Increment = new decimal(new int[] {
@@ -205,7 +225,7 @@ namespace GameOfLife
             0,
             0,
             0});
-            this.spnInterval.Location = new System.Drawing.Point(139, 35);
+            this.spnInterval.Location = new System.Drawing.Point(153, 73);
             this.spnInterval.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -217,7 +237,7 @@ namespace GameOfLife
             0,
             0});
             this.spnInterval.Name = "spnInterval";
-            this.spnInterval.Size = new System.Drawing.Size(120, 23);
+            this.spnInterval.Size = new System.Drawing.Size(75, 23);
             this.spnInterval.TabIndex = 6;
             this.spnInterval.Value = new decimal(new int[] {
             100,
@@ -229,11 +249,12 @@ namespace GameOfLife
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 35);
+            this.label1.Location = new System.Drawing.Point(24, 73);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 15);
             this.label1.TabIndex = 5;
             this.label1.Text = "Interval (ms)";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // txtGenerations
             // 
@@ -258,9 +279,9 @@ namespace GameOfLife
             // 
             // btnOneGen
             // 
-            this.btnOneGen.Location = new System.Drawing.Point(24, 64);
+            this.btnOneGen.Location = new System.Drawing.Point(128, 31);
             this.btnOneGen.Name = "btnOneGen";
-            this.btnOneGen.Size = new System.Drawing.Size(132, 23);
+            this.btnOneGen.Size = new System.Drawing.Size(100, 23);
             this.btnOneGen.TabIndex = 5;
             this.btnOneGen.Text = "One Generation";
             this.btnOneGen.UseVisualStyleBackColor = true;
@@ -269,9 +290,9 @@ namespace GameOfLife
             // btnStop
             // 
             this.btnStop.Enabled = false;
-            this.btnStop.Location = new System.Drawing.Point(153, 119);
+            this.btnStop.Location = new System.Drawing.Point(128, 126);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 23);
+            this.btnStop.Size = new System.Drawing.Size(100, 23);
             this.btnStop.TabIndex = 9;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -279,9 +300,9 @@ namespace GameOfLife
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(29, 119);
+            this.btnStart.Location = new System.Drawing.Point(22, 126);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.Size = new System.Drawing.Size(100, 23);
             this.btnStart.TabIndex = 8;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -297,29 +318,11 @@ namespace GameOfLife
             this.txtGrid.Size = new System.Drawing.Size(651, 497);
             this.txtGrid.TabIndex = 10;
             this.txtGrid.TabStop = false;
+            this.txtGrid.Text = resources.GetString("txtGrid.Text");
             // 
             // tmrTimer
             // 
             this.tmrTimer.Tick += new System.EventHandler(this.tmrTimer_Tick);
-            // 
-            // txtNumberAlive
-            // 
-            this.txtNumberAlive.Enabled = false;
-            this.txtNumberAlive.Location = new System.Drawing.Point(153, 196);
-            this.txtNumberAlive.Name = "txtNumberAlive";
-            this.txtNumberAlive.Size = new System.Drawing.Size(75, 23);
-            this.txtNumberAlive.TabIndex = 100;
-            this.txtNumberAlive.TabStop = false;
-            this.txtNumberAlive.Text = "0";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 199);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 15);
-            this.label2.TabIndex = 101;
-            this.label2.Text = "Number of Alive Cells";
             // 
             // Form1
             // 
