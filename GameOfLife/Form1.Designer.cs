@@ -39,23 +39,22 @@ namespace GameOfLife
             this.lblAlive = new System.Windows.Forms.Label();
             this.lblRows = new System.Windows.Forms.Label();
             this.grpRun = new System.Windows.Forms.GroupBox();
+            this.spnInterval = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtGenerations = new System.Windows.Forms.TextBox();
             this.lblGenerations = new System.Windows.Forms.Label();
-            this.spnAutoStop = new System.Windows.Forms.NumericUpDown();
-            this.chkAutoStop = new System.Windows.Forms.CheckBox();
             this.btnOneGen = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.txtGrid = new System.Windows.Forms.TextBox();
             this.tmrTimer = new System.Windows.Forms.Timer(this.components);
-            this.spnInterval = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txtNumberAlive = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.grpSetup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spnAlive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnColumns)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnRows)).BeginInit();
             this.grpRun.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spnAutoStop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnInterval)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,7 +91,7 @@ namespace GameOfLife
             this.spnAlive.Size = new System.Drawing.Size(120, 23);
             this.spnAlive.TabIndex = 3;
             this.spnAlive.Value = new decimal(new int[] {
-            1,
+            250,
             0,
             0,
             0});
@@ -114,7 +113,7 @@ namespace GameOfLife
             this.spnColumns.Size = new System.Drawing.Size(120, 23);
             this.spnColumns.TabIndex = 2;
             this.spnColumns.Value = new decimal(new int[] {
-            1,
+            50,
             0,
             0,
             0});
@@ -136,10 +135,11 @@ namespace GameOfLife
             this.spnRows.Size = new System.Drawing.Size(120, 23);
             this.spnRows.TabIndex = 1;
             this.spnRows.Value = new decimal(new int[] {
-            1,
+            20,
             0,
             0,
             0});
+            this.spnRows.ValueChanged += new System.EventHandler(this.spnRows_ValueChanged);
             // 
             // btnCreate
             // 
@@ -180,12 +180,12 @@ namespace GameOfLife
             // 
             // grpRun
             // 
+            this.grpRun.Controls.Add(this.label2);
+            this.grpRun.Controls.Add(this.txtNumberAlive);
             this.grpRun.Controls.Add(this.spnInterval);
             this.grpRun.Controls.Add(this.label1);
             this.grpRun.Controls.Add(this.txtGenerations);
             this.grpRun.Controls.Add(this.lblGenerations);
-            this.grpRun.Controls.Add(this.spnAutoStop);
-            this.grpRun.Controls.Add(this.chkAutoStop);
             this.grpRun.Controls.Add(this.btnOneGen);
             this.grpRun.Controls.Add(this.btnStop);
             this.grpRun.Controls.Add(this.btnStart);
@@ -197,106 +197,6 @@ namespace GameOfLife
             this.grpRun.TabStop = false;
             this.grpRun.Text = "Run Tools";
             this.grpRun.Enter += new System.EventHandler(this.groupBox2_Enter);
-            // 
-            // txtGenerations
-            // 
-            this.txtGenerations.Enabled = false;
-            this.txtGenerations.Location = new System.Drawing.Point(153, 206);
-            this.txtGenerations.Name = "txtGenerations";
-            this.txtGenerations.Size = new System.Drawing.Size(75, 23);
-            this.txtGenerations.TabIndex = 99;
-            this.txtGenerations.TabStop = false;
-            this.txtGenerations.Text = "0";
-            this.txtGenerations.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // lblGenerations
-            // 
-            this.lblGenerations.AutoSize = true;
-            this.lblGenerations.Location = new System.Drawing.Point(22, 206);
-            this.lblGenerations.Name = "lblGenerations";
-            this.lblGenerations.Size = new System.Drawing.Size(131, 15);
-            this.lblGenerations.TabIndex = 7;
-            this.lblGenerations.Text = "Number of Generations";
-            this.lblGenerations.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // spnAutoStop
-            // 
-            this.spnAutoStop.Location = new System.Drawing.Point(153, 109);
-            this.spnAutoStop.Maximum = new decimal(new int[] {
-            250,
-            0,
-            0,
-            0});
-            this.spnAutoStop.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.spnAutoStop.Name = "spnAutoStop";
-            this.spnAutoStop.Size = new System.Drawing.Size(75, 23);
-            this.spnAutoStop.TabIndex = 7;
-            this.spnAutoStop.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.spnAutoStop.ValueChanged += new System.EventHandler(this.spnAutoStop_ValueChanged);
-            // 
-            // chkAutoStop
-            // 
-            this.chkAutoStop.AutoSize = true;
-            this.chkAutoStop.Location = new System.Drawing.Point(25, 113);
-            this.chkAutoStop.Name = "chkAutoStop";
-            this.chkAutoStop.Size = new System.Drawing.Size(79, 19);
-            this.chkAutoStop.TabIndex = 6;
-            this.chkAutoStop.Text = "Auto Stop";
-            this.chkAutoStop.UseVisualStyleBackColor = true;
-            // 
-            // btnOneGen
-            // 
-            this.btnOneGen.Location = new System.Drawing.Point(24, 64);
-            this.btnOneGen.Name = "btnOneGen";
-            this.btnOneGen.Size = new System.Drawing.Size(132, 23);
-            this.btnOneGen.TabIndex = 5;
-            this.btnOneGen.Text = "One Generation";
-            this.btnOneGen.UseVisualStyleBackColor = true;
-            this.btnOneGen.Click += new System.EventHandler(this.btnOneGen_Click);
-            // 
-            // btnStop
-            // 
-            this.btnStop.Enabled = false;
-            this.btnStop.Location = new System.Drawing.Point(153, 161);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 23);
-            this.btnStop.TabIndex = 9;
-            this.btnStop.Text = "Stop";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
-            // 
-            // btnStart
-            // 
-            this.btnStart.Location = new System.Drawing.Point(29, 161);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
-            this.btnStart.TabIndex = 8;
-            this.btnStart.Text = "Start";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // txtGrid
-            // 
-            this.txtGrid.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtGrid.Location = new System.Drawing.Point(370, 22);
-            this.txtGrid.Multiline = true;
-            this.txtGrid.Name = "txtGrid";
-            this.txtGrid.Size = new System.Drawing.Size(651, 497);
-            this.txtGrid.TabIndex = 10;
-            this.txtGrid.Text = "XOXOXOXOXO";
-            // 
-            // tmrTimer
-            // 
-            this.tmrTimer.Interval = 500;
-            this.tmrTimer.Tick += new System.EventHandler(this.tmrTimer_Tick);
             // 
             // spnInterval
             // 
@@ -320,7 +220,7 @@ namespace GameOfLife
             this.spnInterval.Size = new System.Drawing.Size(120, 23);
             this.spnInterval.TabIndex = 6;
             this.spnInterval.Value = new decimal(new int[] {
-            500,
+            100,
             0,
             0,
             0});
@@ -334,6 +234,92 @@ namespace GameOfLife
             this.label1.Size = new System.Drawing.Size(73, 15);
             this.label1.TabIndex = 5;
             this.label1.Text = "Interval (ms)";
+            // 
+            // txtGenerations
+            // 
+            this.txtGenerations.Enabled = false;
+            this.txtGenerations.Location = new System.Drawing.Point(153, 167);
+            this.txtGenerations.Name = "txtGenerations";
+            this.txtGenerations.Size = new System.Drawing.Size(75, 23);
+            this.txtGenerations.TabIndex = 99;
+            this.txtGenerations.TabStop = false;
+            this.txtGenerations.Text = "0";
+            this.txtGenerations.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // lblGenerations
+            // 
+            this.lblGenerations.AutoSize = true;
+            this.lblGenerations.Location = new System.Drawing.Point(6, 170);
+            this.lblGenerations.Name = "lblGenerations";
+            this.lblGenerations.Size = new System.Drawing.Size(131, 15);
+            this.lblGenerations.TabIndex = 7;
+            this.lblGenerations.Text = "Number of Generations";
+            this.lblGenerations.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // btnOneGen
+            // 
+            this.btnOneGen.Location = new System.Drawing.Point(24, 64);
+            this.btnOneGen.Name = "btnOneGen";
+            this.btnOneGen.Size = new System.Drawing.Size(132, 23);
+            this.btnOneGen.TabIndex = 5;
+            this.btnOneGen.Text = "One Generation";
+            this.btnOneGen.UseVisualStyleBackColor = true;
+            this.btnOneGen.Click += new System.EventHandler(this.btnOneGen_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.Enabled = false;
+            this.btnStop.Location = new System.Drawing.Point(153, 119);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(75, 23);
+            this.btnStop.TabIndex = 9;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(29, 119);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.TabIndex = 8;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // txtGrid
+            // 
+            this.txtGrid.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtGrid.Location = new System.Drawing.Point(370, 22);
+            this.txtGrid.Multiline = true;
+            this.txtGrid.Name = "txtGrid";
+            this.txtGrid.ReadOnly = true;
+            this.txtGrid.Size = new System.Drawing.Size(651, 497);
+            this.txtGrid.TabIndex = 10;
+            this.txtGrid.TabStop = false;
+            // 
+            // tmrTimer
+            // 
+            this.tmrTimer.Tick += new System.EventHandler(this.tmrTimer_Tick);
+            // 
+            // txtNumberAlive
+            // 
+            this.txtNumberAlive.Enabled = false;
+            this.txtNumberAlive.Location = new System.Drawing.Point(153, 196);
+            this.txtNumberAlive.Name = "txtNumberAlive";
+            this.txtNumberAlive.Size = new System.Drawing.Size(75, 23);
+            this.txtNumberAlive.TabIndex = 100;
+            this.txtNumberAlive.TabStop = false;
+            this.txtNumberAlive.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 199);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(122, 15);
+            this.label2.TabIndex = 101;
+            this.label2.Text = "Number of Alive Cells";
             // 
             // Form1
             // 
@@ -354,7 +340,6 @@ namespace GameOfLife
             ((System.ComponentModel.ISupportInitialize)(this.spnRows)).EndInit();
             this.grpRun.ResumeLayout(false);
             this.grpRun.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spnAutoStop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnInterval)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -375,8 +360,6 @@ namespace GameOfLife
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnOneGen;
-        private System.Windows.Forms.CheckBox chkAutoStop;
-        private System.Windows.Forms.NumericUpDown spnAutoStop;
         private System.Windows.Forms.TextBox txtGrid;
         private System.Windows.Forms.Timer tmrTimer;
         private System.Windows.Forms.Label lblGenerations;
@@ -384,6 +367,8 @@ namespace GameOfLife
         private System.Windows.Forms.NumericUpDown spn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown spnInterval;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtNumberAlive;
     }
 }
 

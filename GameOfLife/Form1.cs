@@ -32,7 +32,7 @@ namespace GameOfLife
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-
+            
             //Set up the properties of the grid
             lifeGrid.Rows = Convert.ToInt32(spnRows.Value);
             lifeGrid.Columns = Convert.ToInt32(spnColumns.Value);
@@ -43,6 +43,8 @@ namespace GameOfLife
                 //create the grid
                 lifeGrid.createGrid();
                 txtGrid.Text = lifeGrid.getGridDisplay();
+                //Reset Generation counter
+                updateGenerationCount();
             }
             catch (Exception errorMessage)
             {
@@ -79,6 +81,8 @@ namespace GameOfLife
             lifeGrid.processOneGeneration();
             txtGrid.Text = lifeGrid.getGridDisplay();
             updateGenerationCount();
+            updateCellsCurrentlyAlive();
+
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -94,12 +98,19 @@ namespace GameOfLife
             txtGrid.Text = lifeGrid.getGridDisplay();
 
             updateGenerationCount();
+            updateCellsCurrentlyAlive();
 
+        }
+
+        private void updateCellsCurrentlyAlive()
+        {
+            //update the number of currently alive cells
+            txtNumberAlive.Text = lifeGrid.GetNumberAlive().ToString();
         }
 
         private void updateGenerationCount()
         {
-            //increase the generation count
+            //update the generation count
             txtGenerations.Text = lifeGrid.Generations.ToString();
         }
         private void label1_Click(object sender, EventArgs e)
@@ -120,6 +131,11 @@ namespace GameOfLife
         private void spnInterval_ValueChanged(object sender, EventArgs e)
         {
             tmrTimer.Interval = Convert.ToInt32(spnInterval.Value);
+        }
+
+        private void spnRows_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
