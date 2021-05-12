@@ -45,21 +45,18 @@ namespace GameOfLife
                 txtGrid.Text = lifeGrid.getGridDisplay();
                 //Reset Generation counter
                 updateGenerationCount();
+                //enable the 'run' controls
+                grpRun.Enabled = true;
             }
             catch (Exception errorMessage)
             {
                 MessageBox.Show(errorMessage.Message);
                 
             }
-
-            //enable the 'run' controls
-            grpRun.Enabled = true;
-
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-
             grpSetup.Enabled = false;
             btnStart.Enabled = false;
             btnStop.Enabled = true;
@@ -148,6 +145,11 @@ namespace GameOfLife
         }
 
         private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtGrid_TextChanged_1(object sender, EventArgs e)
         {
 
         }
